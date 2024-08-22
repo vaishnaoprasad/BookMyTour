@@ -1,0 +1,77 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Offer Places</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title class="ion-text-center" size="large">Offer Places</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <form [formGroup]="placeOfferForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-label position="">Place</ion-label>
+              <ion-input formControlName="place"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Place Description</ion-label>
+              <ion-input formControlName="place_description"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>
+                <h2>Available From</h2>
+                <p>{{fromDate}}</p>
+              </ion-label>
+              <ion-button slot="end" fill="clear" (click)="toggleFromDatePicker()">
+                <ion-icon icon="calendar-sharp" color="warning"></ion-icon>
+              </ion-button>
+            </ion-item>
+            <ion-datetime class="ion-margin-vertical" done="toggleFromDatePicker()" *ngIf="fromDatePicker" size="cover" showDefaultButtons="true"
+              presentation="date" (ionChange)="onSelectDateFrom($event)">
+              <span slot="title">Visit Available From</span>
+              <ion-button slot="buttons" size="small" (click)="toggleFromDatePicker()">Set</ion-button>
+            </ion-datetime>
+
+            <ion-item>
+              <ion-label>
+                <h2>Available Till</h2>
+                <p>{{tillDate}}</p>
+              </ion-label>
+              <ion-button slot="end" fill="clear" (click)="toggleTillDatePicker()">
+                <ion-icon icon="calendar-sharp" color="warning"></ion-icon>
+              </ion-button>
+            </ion-item>
+            <ion-datetime class="ion-margin-vertical" *ngIf="tillDatePicker" size="cover" showDefaultButtons="true" presentation="date"
+              (ionChange)="onSelectDateTill($event)">
+              <span slot="title">Visit Available Till</span>
+              <ion-button slot="buttons" size="small" (click)="toggleTillDatePicker()">Set</ion-button>
+            </ion-datetime>
+
+            <ion-item>
+              <ion-label position="floating">Cost</ion-label>
+              <ion-input formControlName="cost"></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+</ion-content>
+
+<ion-footer>
+  <div style="display: flex; justify-content: center;">
+    <ion-button class="ion-margin" (click)="onSubmitPlaceOfferForm(placeOfferForm)">
+      <ion-label>Offer Place</ion-label>
+      <ion-icon name="checkmark"></ion-icon>
+    </ion-button>
+  </div>
+</ion-footer>

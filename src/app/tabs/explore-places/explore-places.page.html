@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Explore Places</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title class="ion-text-center" size="large">Explore Places</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <ion-card class="explore-places-card-1">
+    <ion-img src="../../../assets/image/place_1.jpg"></ion-img>
+    <h2>Taj Mahaal</h2>
+  </ion-card>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeMd="6" offsetMd="3">
+
+        <ion-list>
+          <ion-item class="ion-margin-vertical" color="primary" button detail *ngFor="let place of places">
+            <ion-thumbnail>
+              <ion-img src="../../../assets/image/place_1.jpg"></ion-img>
+            </ion-thumbnail>
+            <ion-label class="ion-margin">
+              <h2>{{place.place}}</h2>
+              <p>{{place.from+' - '+place.to}}</p>
+              <h3>{{place.cost}}</h3>
+            </ion-label>
+          </ion-item>
+
+        </ion-list>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>
